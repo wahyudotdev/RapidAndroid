@@ -1,4 +1,4 @@
-package com.rapidandroid.core.extension
+package com.rapidcore.core.extension
 
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2

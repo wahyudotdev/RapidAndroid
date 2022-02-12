@@ -1,4 +1,4 @@
-package com.rapidandroid.core.extension
+package com.rapidcore.core.extension
 
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment

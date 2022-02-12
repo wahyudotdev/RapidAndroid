@@ -1,4 +1,4 @@
-package com.rapidandroid.core.extension
+package com.rapidcore.core.extension
 
 import android.text.TextUtils
 import android.util.Patterns

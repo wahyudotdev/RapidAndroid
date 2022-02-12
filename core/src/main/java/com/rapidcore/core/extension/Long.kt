@@ -1,4 +1,4 @@
-package com.rapidandroid.core.extension
+package com.rapidcore.core.extension
 
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat

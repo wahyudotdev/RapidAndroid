@@ -1,4 +1,4 @@
-package com.rapidandroid.app
+package com.rapidcore.app
 
 import org.junit.Test
 
