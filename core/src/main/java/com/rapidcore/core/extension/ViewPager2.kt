@@ -14,12 +14,12 @@ fun ViewPager2.showHorizontalPreview(offsetDpLeft : Int, offsetDpRight : Int, it
     }
 
     // increase this offset to show more of left/right
-    val offsetPxLeft = offsetDpLeft.toPx()
-    val offsetPxRight = offsetDpRight.toPx()
+    val offsetPxLeft = offsetDpLeft.DP
+    val offsetPxRight = offsetDpRight.DP
     this.setPadding(offsetPxLeft, 0, offsetPxRight, 0)
 
     // increase this offset to increase distance between 2 items
-    val pageMarginPx = itemMargin.toPx()
+    val pageMarginPx = itemMargin.DP
     val marginTransformer = MarginPageTransformer(pageMarginPx)
     this.setPageTransformer(marginTransformer)
 }

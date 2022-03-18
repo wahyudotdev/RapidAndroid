@@ -12,6 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "RapidAndroid"
+rootProject.name = "rapidcore"
 include ':app'
 include ':core'

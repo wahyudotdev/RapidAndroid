@@ -8,12 +8,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rapidcore.core.BR
 import com.rapidcore.core.R
 
-open class ListAdapter<VB: ViewDataBinding, T: Any?>(private var layoutRes: Int) : RecyclerView.Adapter<ListAdapter.ItemViewHolder<VB, T>>() {
+
+/**
+ * Created by @yzzzd on 4/19/18.
+ */
+
+
+open class CoreListAdapter<VB: ViewDataBinding, T: Any?>(private var layoutRes: Int) : RecyclerView.Adapter<CoreListAdapter.ItemViewHolder<VB, T>>() {
 
     var items: ArrayList<T?> = ArrayList()
     var onItemClick: ((position: Int, data: T?) -> Unit)? = null
 
-    fun initItem(items: ArrayList<T?>, onItemClick: ((position: Int, data: T?) -> Unit)? = null) : ListAdapter<VB, T> {
+    fun initItem(items: ArrayList<T?>, onItemClick: ((position: Int, data: T?) -> Unit)? = null) : CoreListAdapter<VB, T> {
         this.items = items
         this.onItemClick = onItemClick
         return this
@@ -69,7 +75,7 @@ open class ListAdapter<VB: ViewDataBinding, T: Any?>(private var layoutRes: Int)
     companion object {
         const val VIEW_TYPE_LOADING = 0
         const val VIEW_TYPE_ITEM = 1
-        fun RecyclerView.Adapter<RecyclerView.ViewHolder>.get() = this as ListAdapter<*, *>
+        fun RecyclerView.Adapter<RecyclerView.ViewHolder>.get() = this as CoreListAdapter<*, *>
         fun RecyclerView.ViewHolder.get() = this as ItemViewHolder<*, *>
     }
 }

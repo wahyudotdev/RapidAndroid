@@ -1,13 +1,14 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
 
 android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.rapidandroid.app"
+        applicationId "com.rapidcore.app"
         minSdk 23
         targetSdk 32
         versionCode 1
