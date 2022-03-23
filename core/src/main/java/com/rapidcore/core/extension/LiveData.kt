@@ -54,7 +54,7 @@ fun MediatorLiveData<Boolean>.addFormValidator(
  * contoh usecase pada filter search agar hit-api menunggu
  * input keyboard selesai
  *
- * [lifecycleCoroutineScope] Coroutine scope
+ * [lifecycleOwner] gunakan viewLifecycleOwner untuk fragment
  *
  * [duration] lamanya waktu debounce
  *
@@ -71,47 +71,34 @@ fun MediatorLiveData<Boolean>.addFormValidator(
  *
  * ```
  */
+
 @OptIn(FlowPreview::class)
-fun <T>LiveData<T>.addDebounce(lifecycleCoroutineScope: LifecycleCoroutineScope, duration: Long, addNull: Boolean = true): MediatorLiveData<T> {
-    val mediatorLiveData = MediatorLiveData<T>()
-    val filterFlow = callbackFlow<T?> {
-        mediatorLiveData.addSource(this@addDebounce){
-            trySend(it)
-        }
+fun <T>MutableLiveData<T>.addDebounce(lifecycleOwner: LifecycleOwner, duration: Long, addNull: Boolean = true, observer: (T?) -> Unit): MutableLiveData<T>{
+    val flow = callbackFlow {
+        observe(lifecycleOwner, Observer { value ->
+            trySend(value)
+        })
         awaitClose()
     }.debounce(duration)
-    lifecycleCoroutineScope.launch {
-        filterFlow
-            .onStart {
-                if (addNull) emit(null)
-            }
-            .collect {
-                mediatorLiveData.postValue(it)
-            }
+    lifecycleOwner.lifecycleScope.launch {
+        flow.onStart { if (addNull) emit(null) }
+            .collectLatest {
+            observer(it)
+        }
     }
-    return mediatorLiveData
+    return this
 }
 
-/**
- * Untuk melisten dari livedata lain namun hanya untuk mentrigger ulang aksi didalam observer callback.
- * (gunakan MediatorLiveData jika ingin menggunakan valuenya)
- *
- * Contoh case ketika mem-filter produk dari searchbar dan dari custom filter (urutan, jenis item, dsb)
- *
- * Contoh :
- *```
- * viewModel.searchKeyword.addDebounce(lifecycleScope, 1000)
- *          .addTrigger(viewModel.selectedProductType)
- *          .observe(viewLifecycleOwner) { filter ->
- *               // nilai akan ter-dispatch setiap ada perubahan
- *               // pada viewModel.selectedProductType
- *               // dan viewModel.searchKeyword
- *          }
- *```
- */
-fun <T>MediatorLiveData<T>.addTrigger(liveData: LiveData<out Any>): MediatorLiveData<T>{
-    this.addSource(liveData){
+fun <T>MutableLiveData<T>.triggerWhenTrue(owner: LifecycleOwner, liveData: LiveData<Boolean>): MutableLiveData<T>{
+    liveData.observe(owner, Observer {
+        if (it) this.postValue(this.value)
+    })
+    return this
+}
+
+fun <T>MutableLiveData<T>.addTrigger(owner: LifecycleOwner, liveData: LiveData<out Any>): MutableLiveData<T>{
+    liveData.observe(owner, Observer {
         this.postValue(this.value)
-    }
+    })
     return this
 }
