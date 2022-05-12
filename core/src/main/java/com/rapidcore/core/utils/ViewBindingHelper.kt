@@ -7,12 +7,14 @@ import androidx.databinding.BindingAdapter
 import coil.load
 import coil.size.Scale
 import coil.transform.CircleCropTransformation
+import coil.transform.RoundedCornersTransformation
+import coil.transform.Transformation
 
 object ViewBindingHelper {
 
     @JvmStatic
     @BindingAdapter(
-        value = ["urlImage", "imRes", "placeholder", "progressView", "circleCrop"],
+        value = ["urlImage", "imRes", "placeholder", "progressView", "circleCrop", "cornerRadius"],
         requireAll = false
     )
     fun loadUrlImage(
@@ -21,7 +23,8 @@ object ViewBindingHelper {
         imRes: Int?,
         placeholder: Drawable? = null,
         progressView: ProgressBar? = null,
-        circleCrop: Boolean = false
+        circleCrop: Boolean = false,
+        cornerRadius: Float?
     ) {
         urlImage?.let { url ->
             view.load(url){
@@ -31,9 +34,14 @@ object ViewBindingHelper {
                     this.placeholder(it)
                 }
                 scale(Scale.FILL)
+                val transform = ArrayList<Transformation>()
                 if (circleCrop){
-                    transformations(CircleCropTransformation())
+                    transform.add(CircleCropTransformation())
                 }
+                cornerRadius?.let {
+                    transform.add(RoundedCornersTransformation(it))
+                }
+                transformations(transform)
             }
         }
     }
