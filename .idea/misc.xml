@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="core/src/main/res/layout/item_load_more.xml" value="0.11510416666666666" />
+        <entry key="core/src/main/res/layout/state_loading_pagination.xml" value="0.2078125" />
       </map>
     </option>
   </component>
