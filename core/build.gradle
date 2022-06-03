@@ -40,7 +40,7 @@ apply from: 'publish_local.gradle'
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.0'
     testImplementation 'junit:junit:4.13.2'
@@ -57,7 +57,7 @@ dependencies {
 
     // ktx
     def lifecycle_ktx_version = '2.5.0-rc01'
-    def activity_ktx_version = '1.6.0-alpha03'
+    def activity_ktx_version = '1.6.0-alpha04'
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_ktx_version"
     api "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_ktx_version"
     api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_ktx_version"
