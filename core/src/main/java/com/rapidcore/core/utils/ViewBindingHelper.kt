@@ -4,7 +4,6 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
-import android.widget.ProgressBar
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.BindingAdapter
 import coil.load
@@ -14,8 +13,10 @@ import coil.transform.RoundedCornersTransformation
 import coil.transform.Transformation
 import com.google.android.material.textfield.TextInputLayout
 
+@Suppress("unused")
 object ViewBindingHelper {
 
+    @JvmOverloads
     @JvmStatic
     @BindingAdapter(
         value = ["urlImage", "imRes", "placeholder", "progressView", "circleCrop", "cornerRadius"],
@@ -24,9 +25,7 @@ object ViewBindingHelper {
     fun loadUrlImage(
         view: ImageView,
         urlImage: String?,
-        imRes: Int?,
         placeholder: Drawable? = null,
-        progressView: ProgressBar? = null,
         circleCrop: Boolean = false,
         cornerRadius: Float?
     ) {

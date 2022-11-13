@@ -5,6 +5,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.*
 
+@Suppress("unused")
 fun <T> LiveData<T>.observeOnce(owner: LifecycleOwner, observer: (T) -> Unit) {
     observe(owner, object : Observer<T> {
         override fun onChanged(value: T) {
@@ -32,6 +33,7 @@ fun <T> LiveData<T>.observeOnce(owner: LifecycleOwner, observer: (T) -> Unit) {
  *         idType.value != null && idNumber.value.isNotNullOrEmpty() && idImage.value != null
  * ```
  */
+@Suppress("unused")
 fun MediatorLiveData<Boolean>.addFormValidator(
     listOfLiveData: List<LiveData<out Any>>,
     validator: () -> Boolean
@@ -72,6 +74,7 @@ fun MediatorLiveData<Boolean>.addFormValidator(
  * ```
  */
 
+@Suppress("unused")
 @OptIn(FlowPreview::class)
 fun <T>MutableLiveData<T>.addDebounce(lifecycleOwner: LifecycleOwner, duration: Long, addNull: Boolean = true, observer: (T?) -> Unit): MutableLiveData<T>{
     val flow = callbackFlow {
@@ -89,6 +92,7 @@ fun <T>MutableLiveData<T>.addDebounce(lifecycleOwner: LifecycleOwner, duration: 
     return this
 }
 
+@Suppress("unused")
 fun <T>MutableLiveData<T>.triggerWhenTrue(owner: LifecycleOwner, liveData: LiveData<Boolean>): MutableLiveData<T>{
     liveData.observe(owner, Observer {
         if (it) this.postValue(this.value)
@@ -96,6 +100,7 @@ fun <T>MutableLiveData<T>.triggerWhenTrue(owner: LifecycleOwner, liveData: LiveD
     return this
 }
 
+@Suppress("unused")
 fun <T>MutableLiveData<T>.addTrigger(owner: LifecycleOwner, liveData: LiveData<out Any>): MutableLiveData<T>{
     liveData.observe(owner, Observer {
         this.postValue(this.value)

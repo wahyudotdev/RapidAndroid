@@ -6,6 +6,7 @@ import androidx.viewpager2.widget.ViewPager2
 /**
  * Menampilkan preview halaman selanjutnya di ViewPager2
  */
+@Suppress("unused")
 fun ViewPager2.showHorizontalPreview(offsetDpLeft : Int, offsetDpRight : Int, itemMargin : Int){
     this.apply {
         clipToPadding = false   // allow full width shown with padding

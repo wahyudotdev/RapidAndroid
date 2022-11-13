@@ -27,6 +27,7 @@ import com.rapidcore.core.BR
  * ```
  * Panduan untuk membuat object Pager dapat dilihat di doc [CorePagingSource]
  */
+@Suppress("unused")
 open class PaginationAdapter<VB: ViewDataBinding, T: Any>(private val layoutRes: Int) : PagingDataAdapter<T, PaginationAdapter<VB, T>.ItemViewHolder<VB, T>>(
     DiffUtilCallback()
 ){

@@ -65,6 +65,7 @@ import com.rapidcore.core.BR
  * }
  * ```
  */
+@Suppress("unused")
 open class PaginationLoadState<VB : ViewDataBinding>(private val layoutRes: Int) :
     LoadStateAdapter<PaginationLoadState<VB>.NetworkStateItemViewHolder<VB>>() {
 

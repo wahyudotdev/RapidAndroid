@@ -6,4 +6,5 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.rapidcore.core.utils.Config
 
+@Suppress("unused")
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(Config.PreferenceKey.DATA_STORE_APP_NAME)
