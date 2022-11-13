@@ -56,16 +56,17 @@ import com.rapidcore.core.BR
  *
  * ```
  */
+@Suppress("unused")
 open class ReactiveListAdapter<VB: ViewDataBinding, T: Any>(private val layoutRes: Int) : ListAdapter<T, ReactiveListAdapter<VB, T>.ItemViewHolder<VB, T>>(DiffUtilCallback()){
 
-    var onItemClick: ((position: Int, data: T) -> Unit)? = null
+    private var onItemClick: ((position: Int, data: T) -> Unit)? = null
 
-    open fun initItem(onItemClick: ((position: Int, data: T) -> Unit)? = null): ReactiveListAdapter<VB, T> {
+    open fun onCLick(onItemClick: ((position: Int, data: T) -> Unit)? = null): ReactiveListAdapter<VB, T> {
         this.onItemClick = onItemClick
         return this
     }
 
-    inner class ItemViewHolder<VB : ViewDataBinding, T: Any?>(val binding: VB) : RecyclerView.ViewHolder(binding.root) {
+    inner class ItemViewHolder<VB : ViewDataBinding, T: Any?>(private val binding: VB) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: T?) {
             binding.setVariable(BR.data, data)
             binding.executePendingBindings()
