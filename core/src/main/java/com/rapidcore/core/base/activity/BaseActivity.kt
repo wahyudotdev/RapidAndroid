@@ -7,7 +7,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
 open class BaseActivity<VB : ViewDataBinding>(@LayoutRes private val layoutRes: Int): AppCompatActivity() {
+
+    @Suppress("private")
     protected lateinit var binding: VB
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutRes)

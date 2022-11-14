@@ -1,5 +1,6 @@
 package com.rapidcore.core.utils
 
+@Suppress("unused")
 data class Resource<out T>(
     val status: Status,
     val data: T?,

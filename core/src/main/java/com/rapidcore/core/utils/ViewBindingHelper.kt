@@ -14,6 +14,7 @@ import coil.transform.RoundedCornersTransformation
 import coil.transform.Transformation
 import com.google.android.material.textfield.TextInputLayout
 
+@Suppress("unused")
 object ViewBindingHelper {
 
     @JvmStatic

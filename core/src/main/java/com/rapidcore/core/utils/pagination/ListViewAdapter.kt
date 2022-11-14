@@ -28,6 +28,7 @@ import com.rapidcore.core.BR
  *
  * ```
  */
+@Suppress("unused")
 open class ListViewAdapter<VB: ViewDataBinding, T: Any>(private val layoutRes: Int) : ListAdapter<T, ListViewAdapter<VB, T>.ItemViewHolder<VB, T>>(
     DiffUtilCallback()
 ){

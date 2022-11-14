@@ -9,6 +9,7 @@ import java.util.*
 
 fun randomUUID(): String = UUID.randomUUID().toString()
 
+@Suppress("unused")
 fun Bitmap.toFile(context: Context): File {
     val f = File(context.cacheDir, randomUUID() +".jpg")
     f.createNewFile()
