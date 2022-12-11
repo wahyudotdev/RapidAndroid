@@ -66,7 +66,7 @@ open class ReactiveListAdapter<VB: ViewDataBinding, T: Any>(private val layoutRe
         return this
     }
 
-    inner class ItemViewHolder<VB : ViewDataBinding, T: Any?>(private val binding: VB) : RecyclerView.ViewHolder(binding.root) {
+    inner class ItemViewHolder<VB : ViewDataBinding, T: Any?>(val binding: VB) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: T?) {
             binding.setVariable(BR.data, data)
             binding.executePendingBindings()
